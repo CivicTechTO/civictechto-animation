@@ -23,30 +23,34 @@ export const CttoLogo: React.FC = () => {
       <svg
         viewBox={`0 0 ${config.width} ${config.height}`}
       >
-        <g fill="red" stroke="none" id="logotype" transform="matrix(1,0,0,1,0,1000) scale(2) scale(1, -1)">
-          <g id="civic">
-            <path d={pathUpC} style={{ transform: "translate(100px, 150px)"}} />
-            <path d={pathDownI} style={{ transform: "translate(-18px, -203px)"}} />
-            <path d={pathDownV} style={{ transform: "translate(187px, 148px)"}} />
-            <path d={pathDownI} style={{ transform: "translate(52px, -203px)"}} />
-            <path d={pathDownC} style={{ transform: "translate(250px, 150px)"}} />
+        <g id="logo" transform="translate(0 1000) scale(2) scale(1, -1)" fill="red" stroke="none">
+          <g id="logomark">
           </g>
+          <g id="logotype">
+            <g id="civic">
+              <path d={pathUpC} style={{ transform: "translate(100px, 150px)"}} />
+              <path d={pathDownI} style={{ transform: "translate(-18px, -203px)"}} />
+              <path d={pathDownV} style={{ transform: "translate(187px, 148px)"}} />
+              <path d={pathDownI} style={{ transform: "translate(52px, -203px)"}} />
+              <path d={pathDownC} style={{ transform: "translate(250px, 150px)"}} />
+            </g>
 
-          <g id="tech">
-            <path d={pathUpT} style={{ transform: "translate(339px, 222px)"}} />
-            <path d={pathDownE} style={{ transform: "translate(355px, 181px)"}} />
-            <path d={pathDownC} style={{ transform: "translate(407px, 150px)"}} />
-            <path d={pathDownH} style={{ transform: "translate(477px, 148px)"}} />
-          </g>
+            <g id="tech">
+              <path d={pathUpT} style={{ transform: "translate(339px, 222px)"}} />
+              <path d={pathDownE} style={{ transform: "translate(355px, 181px)"}} />
+              <path d={pathDownC} style={{ transform: "translate(407px, 150px)"}} />
+              <path d={pathDownH} style={{ transform: "translate(477px, 148px)"}} />
+            </g>
 
-          <g id="toronto">
-            <path d={tPath} style={{ transform: "translate(192px, 116px)"}} />
-            <path d={oPath} style={{ transform: "translate(211px, 109px)" }}/>
-            <path d={rPath} style={{ transform: "translate(247px, 99px)" }} />
-            <path d={oPath} style={{ transform: "translate(282px, 109px)" }}/>
-            <path d={nPath} style={{ transform: "translate(330px, 76px)" }}/>
-            <path d={tPath} style={{ transform: "translate(371px, 116px)" }}/>
-            <path d={oPath} style={{ transform: "translate(390px, 109px)" }}/>
+            <g id="toronto">
+              <path d={tPath} style={{ transform: "translate(192px, 116px)"}} />
+              <path d={oPath} style={{ transform: "translate(211px, 109px)" }}/>
+              <path d={rPath} style={{ transform: "translate(247px, 99px)" }} />
+              <path d={oPath} style={{ transform: "translate(282px, 109px)" }}/>
+              <path d={nPath} style={{ transform: "translate(330px, 76px)" }}/>
+              <path d={tPath} style={{ transform: "translate(371px, 116px)" }}/>
+              <path d={oPath} style={{ transform: "translate(390px, 109px)" }}/>
+            </g>
           </g>
         </g>
       </svg>
