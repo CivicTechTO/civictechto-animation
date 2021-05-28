@@ -1,5 +1,4 @@
 import {Img, useVideoConfig} from 'remotion'
-import logo from '../../../ctto-logo.svg'
 
 export const CttoLogo: React.FC = () => {
 	const config = useVideoConfig();
@@ -40,11 +39,10 @@ export const CttoLogo: React.FC = () => {
 
   return (
     <>
-      <Img src={logo} style={{position: "absolute", transform: "scale(1.5)", opacity: "0", margin: "86px 169px", display: ""}} />
       <svg
         viewBox={`0 0 ${config.width} ${config.height}`}
       >
-        <g id="logo" transform="translate(0 1000) scale(2) scale(1, -1)" fill={color} stroke="none">
+        <g id="logo" transform="translate(400 1050) scale(1.8) scale(1, -1)" fill={color} stroke="none">
           <g id="logomark" stroke={color} strokeWidth="1">
             <g strokeWidth="2">
               <path id="bracket-open" d={pathBracketOpen} style={{ transform: "translate(252px, 332px)" }} />
