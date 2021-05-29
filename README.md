@@ -1,12 +1,12 @@
-# Remotion video
+# Remotion video: Civic Tech Toronto
 
 <p align="center">
-  <a href="https://github.com/JonnyBurger/remotion-logo">
-    <img src="https://github.com/JonnyBurger/remotion-logo/raw/main/withtitle/element-0.png">
+  <a href="https://github.com/patcon/civictechto-animation">
+    <img src="editor-screenshot.png">
   </a>
 </p>
 
-Welcome to your Remotion project!
+Welcome to your Remotion project! Remotion is a tool for creating video animations completely in ReactJS.
 
 ## Commands
 
