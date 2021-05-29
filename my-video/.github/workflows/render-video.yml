@@ -1,12 +1,12 @@
 on:
   workflow_dispatch:
     inputs:
-      titleText:
-        description: "Which text should it say?"
+      framesDelay:
+        description: "How many frames before animation starts?"
         required: true
-        default: "Welcome to Remotion"
-      titleColor:
-        description: "Which color should it be in?"
+        default: 0
+      logoColor:
+        description: "Which color should the logo be in? (hex or human)"
         required: true
         default: "black"
 name: Render video
