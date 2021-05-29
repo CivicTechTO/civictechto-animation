@@ -34,7 +34,7 @@ npm run build
 3. set any inputs (use `main` branch), and
 4. click the "Run workflow" button to start!
 
-Your video will appear as an "artifact" on the workflow run when completed.
+Your video will appear as an "artifact" on the workflow run when completed ([example](https://github.com/patcon/civictechto-animation/actions/runs/887509747)).
 
 **Server render demo**
 
