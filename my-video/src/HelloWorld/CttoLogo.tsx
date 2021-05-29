@@ -1,4 +1,5 @@
 import {Img, useVideoConfig, useCurrentFrame, spring} from 'remotion'
+import {useRef, useEffect} from 'react'
 
 export const CttoLogo: React.FC = () => {
 	const config = useVideoConfig();
@@ -36,11 +37,11 @@ export const CttoLogo: React.FC = () => {
   const pathTowerBase = `m 0,0 c -14.038,14.029 -32.455,23.327 -51.136,23.342 -18.68,-0.015 -37.424,-9.655 -51.467,-23.683 l 4.008,-1.941 c 13.4,13.414 30.212,21.43 47.459,21.416 17.247,0.014 34.757,-8.699 48.162,-22.109 l 4.539,1.41 z`
   const pathCircle = `m 0,0 h -1.872 c 0,-38.131 -15.355,-73.347 -40.136,-99.024 -24.78,-25.673 -58.947,-41.789 -96.591,-41.789 -35.693,-0.005 -69.913,14.59 -95.182,38.029 -25.272,23.44 -41.549,55.656 -41.549,90.896 0,3.862 0.195,7.768 0.595,11.698 3.872,37.887 19.821,70.035 44.192,92.734 24.376,22.693 57.173,35.961 94.924,35.966 37.755,-0.005 71.181,-13.117 95.167,-35.703 C -16.472,70.216 -1.882,38.16 -1.872,0 H 0 1.872 c 0.01,39.121 -15.023,72.254 -39.755,95.533 -24.731,23.288 -59.113,36.727 -97.736,36.722 -38.629,0.005 -72.411,-13.619 -97.479,-36.971 -25.068,-23.342 -41.413,-56.387 -45.362,-95.094 -0.415,-4.057 -0.615,-8.09 -0.615,-12.078 0,-36.415 16.818,-69.602 42.744,-93.641 25.931,-24.049 61.01,-39.024 97.732,-39.028 C -61.117,-144.533 1.863,-78.286 1.872,0 Z`
 
-  const color = "red"
+  const color = "black"
 
   const scaleCivic = spring({
     fps: config.fps,
-    frame: frame,
+    frame: frame - 10,
     config: {
       damping: 100,
       stiffness: 200,
@@ -48,13 +49,44 @@ export const CttoLogo: React.FC = () => {
     },
   })
 
+  const scaleTech = spring({
+    fps: config.fps,
+    frame: frame - 15,
+    config: {
+      damping: 100,
+      stiffness: 200,
+      mass: 0.5,
+    },
+  })
+
+  const scaleToronto = spring({
+    fps: config.fps,
+    frame: frame - 25,
+    config: {
+      damping: 100,
+      stiffness: 200,
+      mass: 0.5,
+    },
+  })
+
+  const maxBlur = 10
+
+  const logomarkGroup = useRef(null)
+  const logotypeGroup = useRef(null)
+
+  const logotypeBBox = logotypeGroup.current?.getBBox()
+  var logotypeX, logotypeY
+  if (logotypeBBox) {
+    [logotypeX, logotypeY] = [logotypeBBox.x + logotypeBBox.width/2, logotypeBBox.y + logotypeBBox.height/2]
+  }
+
   return (
     <>
       <svg
         viewBox={`0 0 ${config.width} ${config.height}`}
       >
         <g id="logo" transform="translate(400 1050) scale(1.8) scale(1, -1)" fill={color} stroke="none">
-          <g id="logomark" stroke={color} strokeWidth="1">
+          <g id="logomark" stroke={color} strokeWidth="1" ref={logomarkGroup}>
             <g strokeWidth="2">
               <path id="bracket-open" d={pathBracketOpen} style={{ transform: "translate(252px, 332px)" }} />
               <path id="slash" d={pathSlash} style={{ transform: "translate(303px, 328px)" }} />
@@ -77,10 +109,11 @@ export const CttoLogo: React.FC = () => {
             </g>
             <path id="circle" d={pathCircle} style={{ transform: "translate(426px, 404px)" }} />
           </g>
-          <g id="logotype">
+          <g id="logotype" ref={logotypeGroup}>
             <g id="civic"
               style={{
-                transform: `translate(${(1-scaleCivic)*184}px, ${(1-scaleCivic)*185}px) scale(${scaleCivic})`
+                transform: `translate(${(1-scaleCivic)*logotypeX}px, ${(1-scaleCivic)*(logotypeY-100)}px) scale(${scaleCivic})`,
+                filter: `blur(${maxBlur-scaleCivic*maxBlur}px)`,
               }}
             >
               <path d={pathUpC} style={{ transform: "translate(100px, 150px)"}} />
@@ -90,14 +123,24 @@ export const CttoLogo: React.FC = () => {
               <path d={pathDownC} style={{ transform: "translate(250px, 150px)"}} />
             </g>
 
-            <g id="tech">
+            <g id="tech"
+              style={{
+                transform: `translate(${(1-scaleTech)*logotypeX}px, ${(1-scaleTech)*(logotypeY-100)}px) scale(${scaleTech})`,
+                filter: `blur(${maxBlur-scaleTech*maxBlur}px)`,
+              }}
+            >
               <path d={pathUpT} style={{ transform: "translate(339px, 222px)"}} />
               <path d={pathDownE} style={{ transform: "translate(355px, 181px)"}} />
               <path d={pathDownC} style={{ transform: "translate(407px, 150px)"}} />
               <path d={pathDownH} style={{ transform: "translate(477px, 148px)"}} />
             </g>
 
-            <g id="toronto">
+            <g id="toronto"
+              style={{
+                transform: `translate(${(1-scaleToronto)*logotypeX}px, ${(1-scaleToronto)*(logotypeY-100)}px) scale(${scaleToronto})`,
+                filter: `blur(${maxBlur-scaleToronto*maxBlur}px)`,
+              }}
+            >
               <path d={tPath} style={{ transform: "translate(192px, 116px)"}} />
               <path d={oPath} style={{ transform: "translate(211px, 109px)" }}/>
               <path d={rPath} style={{ transform: "translate(247px, 99px)" }} />
