@@ -69,6 +69,18 @@ export const CttoLogo: React.FC = () => {
     },
   })
 
+  const scaleLogo = spring({
+    frame,
+    fps: config.fps,
+    from: 10,
+    to: 1,
+    config: {
+      damping: 100,
+      stiffness: 200,
+      mass: 0.5,
+    },
+  })
+
   const maxBlur = 10
 
   const logomarkGroup = useRef(null)
@@ -80,13 +92,29 @@ export const CttoLogo: React.FC = () => {
     [logotypeX, logotypeY] = [logotypeBBox.x + logotypeBBox.width/2, logotypeBBox.y + logotypeBBox.height/2]
   }
 
+  const logomarkBBox = logomarkGroup.current?.getBBox()
+  var logomarkX, logomarkY
+  if (logomarkBBox) {
+    [logomarkX, logomarkY] = [logomarkBBox.x + logomarkBBox.width/2, logomarkBBox.y + logomarkBBox.height/2]
+  }
+
   return (
     <>
       <svg
         viewBox={`0 0 ${config.width} ${config.height}`}
       >
         <g id="logo" transform="translate(400 1050) scale(1.8) scale(1, -1)" fill={color} stroke="none">
-          <g id="logomark" stroke={color} strokeWidth="1" ref={logomarkGroup}>
+          <g id="logomark" stroke={color} strokeWidth="1" ref={logomarkGroup} style={{
+            transform: `
+              rotate(${(scaleLogo-1)*8}deg)
+              translate(${(1-scaleLogo)*logomarkX}px, ${(1-scaleLogo)*(logomarkY-50)}px)
+              scale(${scaleLogo})
+            `,
+            // Blur in.
+            filter: `blur(${scaleLogo-1}px)`,
+            // Fades in from 0 to 1.
+            opacity: (scaleLogo-10)/-9,
+          }}>
             <g strokeWidth="2">
               <path id="bracket-open" d={pathBracketOpen} style={{ transform: "translate(252px, 332px)" }} />
               <path id="slash" d={pathSlash} style={{ transform: "translate(303px, 328px)" }} />
