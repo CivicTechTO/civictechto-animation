@@ -4,7 +4,7 @@ on:
       framesDelay:
         description: "How many frames before animation starts?"
         required: true
-        default: 0
+        default: 10
       logoColor:
         description: "Which color should the logo be in? (hex or human)"
         required: true
