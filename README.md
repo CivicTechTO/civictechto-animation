@@ -22,6 +22,20 @@ npm start
 npm run build
 ```
 
+**GitHub Render**
+
+1. Visit the [page for "Render video" workflow](https://github.com/patcon/civictechto-animation/actions/workflows/render-video.yml),
+2. open the "Run workflow" dropdown (requires appropriate access on repo),
+    - <details>
+      <summary>Click for screenshot...</summary>
+
+      ![screenshot of the render video workflow page and button](github-screenshot.png)
+      </details>
+3. set any inputs (use `main` branch), and
+4. click the "Run workflow" button to start!
+
+Your video will appear as an "artifact" on the workflow run when completed.
+
 **Server render demo**
 
 ```console
