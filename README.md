@@ -8,6 +8,8 @@
 
 Welcome to your Remotion project! Remotion is a tool for creating video animations completely in ReactJS.
 
+This project generates an intro animation for Civic Tech Toronto video content. [Download a sample video of the generated animation.](https://drive.google.com/uc?id=1JDUGL2VLidpySfN1iVrVeqAHXg8F4RAi&authuser=0&export=download)
+
 ## Commands
 
 **Start Preview**
